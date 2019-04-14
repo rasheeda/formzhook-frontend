@@ -11,9 +11,9 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import SendIcon from "@material-ui/icons/Send";
 import Divider from "@material-ui/core/Divider";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Dashboard from "../components/Dashboard"
-import Formz from "../components/Formz"
-import Developer from "../components/Developer"
+import Dashboard from "../sections/Dashboard"
+import Formz from "../sections/Formz"
+import Developer from "../sections/Developer"
 
 const styles = theme => ({
   menuItem: {
@@ -31,11 +31,11 @@ const styles = theme => ({
 function Index() {
     return <h2>Home</h2>;
   }
-  
+
   function About() {
     return <h2>About</h2>;
   }
-  
+
   function Users() {
     return <h2>Users</h2>;
   }
@@ -47,7 +47,7 @@ function Menu(props) {
     <Router>
       <Paper>
         <MenuList>
-          <Link to="/">
+          <Navlink to="/">
             <MenuItem className={classes.menuItem}>
               <ListItemIcon className={classes.icon}>
                 <SendIcon />
@@ -58,9 +58,9 @@ function Menu(props) {
                 primary="Dashboard"
               />
             </MenuItem>
-          </Link>
+          </Navlink>
           <Divider />
-          <Link to="/formz">
+          <Navlink to="/formz">
             <MenuItem className={classes.menuItem}>
               <ListItemIcon className={classes.icon}>
                 <DraftsIcon />
@@ -71,9 +71,9 @@ function Menu(props) {
                 primary="Formz"
               />
             </MenuItem>
-          </Link>
+          </Navlink>
           <Divider />
-          <Link to="/developer">
+          <Navlink to="/developer">
             <MenuItem className={classes.menuItem}>
               <ListItemIcon className={classes.icon}>
                 <InboxIcon />
@@ -84,7 +84,7 @@ function Menu(props) {
                 primary="API"
               />
             </MenuItem>
-          </Link>
+          </Navlink>
         </MenuList>
       </Paper>
 
