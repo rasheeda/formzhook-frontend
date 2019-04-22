@@ -10,7 +10,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import SendIcon from "@material-ui/icons/Send";
 import Divider from "@material-ui/core/Divider";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, NavLink} from "react-router-dom";
 import Dashboard from "../sections/Dashboard"
 import Formz from "../sections/Formz"
 import Developer from "../sections/Developer"
@@ -47,7 +47,7 @@ function Menu(props) {
     <Router>
       <Paper>
         <MenuList>
-          <Navlink to="/">
+          <NavLink to="/">
             <MenuItem className={classes.menuItem}>
               <ListItemIcon className={classes.icon}>
                 <SendIcon />
@@ -58,9 +58,9 @@ function Menu(props) {
                 primary="Dashboard"
               />
             </MenuItem>
-          </Navlink>
+          </NavLink>
           <Divider />
-          <Navlink to="/formz">
+          <NavLink to="/formz">
             <MenuItem className={classes.menuItem}>
               <ListItemIcon className={classes.icon}>
                 <DraftsIcon />
@@ -71,9 +71,9 @@ function Menu(props) {
                 primary="Formz"
               />
             </MenuItem>
-          </Navlink>
+          </NavLink>
           <Divider />
-          <Navlink to="/developer">
+          <NavLink to="/developer">
             <MenuItem className={classes.menuItem}>
               <ListItemIcon className={classes.icon}>
                 <InboxIcon />
@@ -84,7 +84,7 @@ function Menu(props) {
                 primary="API"
               />
             </MenuItem>
-          </Navlink>
+          </NavLink>
         </MenuList>
       </Paper>
 

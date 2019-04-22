@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import {Link} from 'react-router-dom';
 
 const styles = {
   card: {
@@ -26,7 +27,7 @@ const styles = {
     marginBottom: 12,
   },
   button: {
-    margin: theme.spacing.unit,
+    // margin: theme.spacing.unit,
   },
   input: {
     display: 'none',
@@ -40,7 +41,7 @@ function SimpleCard(props) {
     <Card className={classes.card}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {props.key}
+          {props.uniqueKey}
         </Typography>
         <Typography variant="h5" component="h2">
           {props.name}
@@ -53,7 +54,7 @@ function SimpleCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Link to={'/formz/' + props.key + '/data'}>
+        <Link to={'/formz/' + props.uniqueId + '/data'}>
             <Button variant="outlined" color="primary" className={classes.button}>
                 View Data
             </Button>

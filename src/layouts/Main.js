@@ -8,7 +8,7 @@ import Header from "./Header";
 import Menu from "./Menu";
 import Typography from "@material-ui/core/Typography";
 import Content from "./Content";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 const styles = theme => ({
   root: {

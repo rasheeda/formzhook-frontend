@@ -5,15 +5,8 @@ import FormzCard from './FormzCard';
 import { withStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-
-const FORMZ_API_URL = 'http://';
-
-export const STATUSES = {
-    idle: 'IDLE',
-    loading: 'LOADING',
-    success: 'SUCCESS',
-    error: 'ERROR'
-};
+import {Link} from 'react-router-dom';
+import {FORMZ_API_URL, STATUSES} from '../constants';
 
 const FormzItem = ({id, name, description, dateCreated}) => (
     <React.Fragment>
@@ -22,28 +15,33 @@ const FormzItem = ({id, name, description, dateCreated}) => (
     </React.Fragment>
 )
 
-
 class Formz extends React.Component {
 
-    static PropTypes = {
-    }
+    constructor(props) {
+        super(props);
 
-    state = {
-        formz: [],
-        formzStatus: STATUSES.idle
+        this.state = {
+            formzData: {},
+            formzStatus: STATUSES.idle
+        }
     }
 
     componentWillMount() {
         wretch(FORMZ_API_URL)
+        .headers({ "Access-Control-Allow-Origin": "*",
+         "Origin": "http://127.0.0.1:5000",
+        "crossDomain": true })
         .query({
             // TODO: post the user info here, form id, user auth
         })
         .get()
         .json(response => {
             this.setState({
-                formz: response.data,
+                formzData: response,
                 formzStatus: STATUSES.success
             });
+
+            console.log('formzData: ' + JSON.stringify(this.state.formzData));
         })
         .catch(() => {
             this.setState({
@@ -56,16 +54,17 @@ class Formz extends React.Component {
         return (
             <div>
                 {/* return cards of the form in an array map or foreach */}
-                <Fab color="primary" aria-label="Add">
+                {/* <Fab color="primary" aria-label="Add">
                     <AddIcon />
-                </Fab>
-                {
-                    this.state.formz.map(form => 
+                </Fab> */}
+                {this.state.formzStatus === STATUSES.success &&
+                    this.state.formzData.map(form => 
                         <FormzCard 
-                            id={form.key}
+                            uniqueId={form.id}
                             name={form.name}
                             description={form.description}
                             dateCreated={form.dateCreated}
+                            uniqueKey={'hhg78t8t87tf875'}
                         />
                     )
                 }
