@@ -47,7 +47,7 @@ function Menu(props) {
     <Router>
       <Paper>
         <MenuList>
-          <NavLink to="/">
+          <Link to="/">
             <MenuItem className={classes.menuItem}>
               <ListItemIcon className={classes.icon}>
                 <SendIcon />
@@ -58,7 +58,7 @@ function Menu(props) {
                 primary="Dashboard"
               />
             </MenuItem>
-          </NavLink>
+          </Link>
           <Divider />
           <NavLink to="/formz">
             <MenuItem className={classes.menuItem}>

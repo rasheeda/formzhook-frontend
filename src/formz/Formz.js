@@ -41,7 +41,7 @@ class Formz extends React.Component {
                 formzStatus: STATUSES.success
             });
 
-            console.log('formzData: ' + JSON.stringify(this.state.formzData));
+            // console.log('formzData: ' + JSON.stringify(this.state.formzData));
         })
         .catch(() => {
             this.setState({
@@ -65,6 +65,7 @@ class Formz extends React.Component {
                             description={form.description}
                             dateCreated={form.dateCreated}
                             uniqueKey={'hhg78t8t87tf875'}
+                            key={form.id}
                         />
                     )
                 }
