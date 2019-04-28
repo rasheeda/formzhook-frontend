@@ -10,10 +10,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import SendIcon from "@material-ui/icons/Send";
 import Divider from "@material-ui/core/Divider";
-import { BrowserRouter as Router, Route, Link, NavLink} from "react-router-dom";
-import Dashboard from "../sections/Dashboard"
-import Formz from "../sections/Formz"
-import Developer from "../sections/Developer"
+import { Link, NavLink} from "react-router-dom";
 
 const styles = theme => ({
   menuItem: {
@@ -44,7 +41,6 @@ function Menu(props) {
   const { classes } = props;
 
   return (
-    <Router>
       <Paper>
         <MenuList>
           <Link to="/">
@@ -87,11 +83,6 @@ function Menu(props) {
           </NavLink>
         </MenuList>
       </Paper>
-
-      {/* <Route path="/" exact component={Dashboard} />
-      <Route path="/formz/" component={Formz} />
-      <Route path="/developer/" component={Developer} /> */}
-    </Router>
   );
 }
 

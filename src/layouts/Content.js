@@ -9,37 +9,14 @@ class Content extends React.Component {
   render() {
     return (
       <div>
-        <Router>
-          <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/formz/">Formz</Link>
-                </li>
-              </ul>
-            </nav>
-
-            <Route path="/" exact component={Dashboard} />
-            <Route exact path="/formz/" component={Formz} />
-            <Route
-              path="/formz/:id/data"
-              render={props => <FormzData {...props} />}
-            />
-          </div>
-        </Router>
-
-        {/* <Switch>
-          <Route path="/" exact component={Dashboard} />
-          <Route path="/formz/" component={Formz} />
-          <Route path="/developer/" component={Developer} />
-          <Route
-            path="/formz/:id/data"
-            render={props => <FormzData {...props} />}
-          />
-        </Switch> */}
+        <Route path="/" exact component={Dashboard} />
+        <Route exact path="/formz" component={Formz} />
+        <Route path="/developer/" component={Developer} />
+        <Route
+          exact
+          path="/formz/:id/data"
+          render={props => <FormzData {...props} />}
+        />
       </div>
     );
   }

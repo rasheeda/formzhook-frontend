@@ -54,10 +54,11 @@ class Formz extends React.Component {
         return (
             <div>
                 {/* return cards of the form in an array map or foreach */}
-                {/* <Fab color="primary" aria-label="Add">
+                <Fab color="primary" aria-label="Add">
                     <AddIcon />
-                </Fab> */}
-                {this.state.formzStatus === STATUSES.success &&
+                </Fab>
+                <Link to="/formz/1/data">Form Data</Link>
+                {/* {this.state.formzStatus === STATUSES.success &&
                     this.state.formzData.map(form => 
                         <FormzCard 
                             uniqueId={form.id}
@@ -68,7 +69,7 @@ class Formz extends React.Component {
                             key={form.id}
                         />
                     )
-                }
+                } */}
             </div>
         )
     }

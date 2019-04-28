@@ -44,6 +44,7 @@ export default class FormzData extends React.Component {
   render() {
     return (
       <div>
+        Hello from formz data
         {this.state.FormzDataStatus === STATUSES.success && (
           <FormzDataItem results={this.state.FormzDataResults} />
         )}
