@@ -11,9 +11,8 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import SendIcon from "@material-ui/icons/Send";
 import Divider from "@material-ui/core/Divider";
 import { BrowserRouter as Router, Route, Link, NavLink} from "react-router-dom";
-import Dashboard from "../sections/Dashboard"
-import Formz from "../sections/Formz"
-import Developer from "../sections/Developer"
+import { DatePicker } from 'antd';
+
 
 const styles = theme => ({
   menuItem: {
@@ -27,18 +26,6 @@ const styles = theme => ({
   primary: {},
   icon: {}
 });
-
-function Index() {
-    return <h2>Home</h2>;
-  }
-
-  function About() {
-    return <h2>About</h2>;
-  }
-
-  function Users() {
-    return <h2>Users</h2>;
-  }
 
 function Menu(props) {
   const { classes } = props;
@@ -87,10 +74,6 @@ function Menu(props) {
           </NavLink>
         </MenuList>
       </Paper>
-
-      {/* <Route path="/" exact component={Dashboard} />
-      <Route path="/formz/" component={Formz} />
-      <Route path="/developer/" component={Developer} /> */}
     </Router>
   );
 }
