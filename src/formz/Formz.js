@@ -1,16 +1,11 @@
 import React from 'react';
 import wretch from "wretch"
-import CssBaseline from '@material-ui/core/CssBaseline';
 import FormzCard from './FormzCard';
-import { withStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import {Link} from 'react-router-dom';
 import {FORMZ_API_URL, STATUSES} from '../constants';
 
 const FormzItem = ({id, name, description, dateCreated}) => (
     <React.Fragment>
-        <CssBaseline />
         
     </React.Fragment>
 )
@@ -53,10 +48,6 @@ class Formz extends React.Component {
     render() {
         return (
             <div>
-                {/* return cards of the form in an array map or foreach */}
-                {/* <Fab color="primary" aria-label="Add">
-                    <AddIcon />
-                </Fab> */}
                 {this.state.formzStatus === STATUSES.success &&
                     this.state.formzData.map(form => 
                         <FormzCard 
