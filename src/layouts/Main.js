@@ -24,7 +24,7 @@ class Main extends Component {
               <Breadcrumb.Item>Formz</Breadcrumb.Item>
               <Breadcrumb.Item>API</Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
+            <div className="mainContainer">
               <Main_Content />
             </div>
           </Content>

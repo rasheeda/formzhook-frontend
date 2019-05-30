@@ -1,68 +1,19 @@
-import React from 'react';
-import wretch from "wretch"
-import FormzCard from './FormzCard';
-import {Link} from 'react-router-dom';
-import {FORMZ_API_URL, STATUSES} from '../constants';
-
-const FormzItem = ({id, name, description, dateCreated}) => (
-    <React.Fragment>
-        
-    </React.Fragment>
-)
+import React from "react";
+import wretch from "wretch";
+import { Link } from "react-router-dom";
+import { FORMZ_API_URL, STATUSES } from "../constants";
+import { Card, Col, Icon, Button, Divider, Table, Tag } from "antd";
+import './Form.css';
+import EditableFormTable from './FormzTable';
 
 class Formz extends React.Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            formzData: {},
-            formzStatus: STATUSES.idle
-        }
-    }
-
-    componentWillMount() {
-        wretch(FORMZ_API_URL)
-        .headers({ "Access-Control-Allow-Origin": "*",
-         "Origin": "http://127.0.0.1:5000",
-        "crossDomain": true })
-        .query({
-            // TODO: post the user info here, form id, user auth
-        })
-        .get()
-        .json(response => {
-            this.setState({
-                formzData: response,
-                formzStatus: STATUSES.success
-            });
-
-            // console.log('formzData: ' + JSON.stringify(this.state.formzData));
-        })
-        .catch(() => {
-            this.setState({
-                formzStatus: STATUSES.error
-            });
-        });
-    }
-
-    render() {
-        return (
-            <div>
-                {this.state.formzStatus === STATUSES.success &&
-                    this.state.formzData.map(form => 
-                        <FormzCard 
-                            uniqueId={form.id}
-                            name={form.name}
-                            description={form.description}
-                            dateCreated={form.dateCreated}
-                            uniqueKey={'hhg78t8t87tf875'}
-                            key={form.id}
-                        />
-                    )
-                }
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <EditableFormTable />
+      </div>
+    );
+  }
 }
 
 export default Formz;

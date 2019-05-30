@@ -13,9 +13,10 @@ class Main_Content extends React.Component {
         <Switch>
           <Route path="/" exact component={Dashboard} />
           <Route path="/formz/" exact component={Formz} />
-          <Route path="/developer/" component={Developer} />
+          <Route path="/developer/" exact component={Developer} />
           <Route
             path="/formz/:id/data"
+            exact
             render={props => <FormzData {...props} />}
           />
         </Switch>

@@ -17,7 +17,6 @@ export default class FormzData extends React.Component {
     wretch(`${FORMZ_API_URL}/${this.props.match.params.id}/data`)
       .headers({
         "Access-Control-Allow-Origin": "*",
-        Origin: "http://127.0.0.1:5000",
         crossDomain: true
       })
       .query({
@@ -45,7 +44,7 @@ export default class FormzData extends React.Component {
     return (
       <div>
         {this.state.FormzDataStatus === STATUSES.success && (
-          <FormzDataItem results={this.state.FormzDataResults} />
+          <FormzDataItem results={this.state.FormzDataResults} key={this.state.FormzDataResults}/>
         )}
       </div>
     );
