@@ -17,10 +17,8 @@ import { Link } from "react-router-dom";
 import {
   loadForm,
   updateForm,
-  deleteForm,
-  loadFormDataCount
+  deleteForm
 } from "./services";
-import { nullableTypeAnnotation } from "@babel/types";
 
 const EditableContext = React.createContext();
 
@@ -100,8 +98,8 @@ class EditableTable extends React.Component {
       },
       {
         title: "ID",
-        dataIndex: "id",
-        key: "id",
+        dataIndex: "unique_id",
+        key: "unique_id",
         editable: false
       },
       {
@@ -118,7 +116,7 @@ class EditableTable extends React.Component {
           <span>
             <Tag color="green">{text} data items</Tag>
             <Divider type="vertical" />
-            <Link to={"/formz/" + record.id + "/data"}>
+            <Link to={"/formz/" + record.unique_id + "/data"}>
               <Button type="primary">View Data</Button>
             </Link>
           </span>
