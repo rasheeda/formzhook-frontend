@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Header_Content from "./Header_Content";
 import Main_Content from "./Main_Content";
 import { BrowserRouter } from "react-router-dom";

@@ -1,0 +1,44 @@
+.dashboard-value-content .ant-row > div {
+  border: 0;
+}
+
+.dashboard-value-content-box {
+  background-color: #e5e5e5;
+  padding: 20px;
+}
+
+.dashboard-value-content-title {
+  text-align: center;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.dashboard-value-content-data {
+  font-size: 40px;
+  text-align: center;
+}
+
+.gutter-row {
+  padding: 24px;
+  height: 100%;
+}
+
+.formz-count {
+  color: black;
+}
+
+.formz-data-count {
+  color: aqua;
+}
+
+.formz-something-count {
+  color: cornflowerblue;
+}
+
+.formz-data-count-graph {
+  text-align: center;
+}
+
+.formz-data-count-period {
+  text-align: center;
+}
