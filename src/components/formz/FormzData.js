@@ -1,5 +1,5 @@
 import React from "react";
-import { FORMZ_API_URL, STATUSES } from "../constants";
+import { FORMZ_API_URL, STATUSES } from "../../constants";
 import wretch from "wretch";
 import FormzDataItem from "./FormzDataItem";
 

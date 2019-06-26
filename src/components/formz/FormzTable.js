@@ -12,7 +12,7 @@ import {
   Popconfirm,
   Alert
 } from "antd";
-import { STATUSES } from "../constants";
+import { STATUSES } from "../../constants";
 import { Link } from "react-router-dom";
 import {
   loadForm,
