@@ -4,12 +4,13 @@ import Dashboard from "../sections/Dashboard";
 import Formz from "../formz/Formz";
 import Developer from "../sections/Developer";
 import FormzData from "../formz/FormzData";
+import UserRegistration from "../sections/register";
+import UserLogin from "../sections/login";
 
 class Main_Content extends React.Component {
   render() {
     return (
       <div>
-
         <Switch>
           <Route path="/" exact component={Dashboard} />
           <Route path="/formz/" exact component={Formz} />
@@ -19,6 +20,8 @@ class Main_Content extends React.Component {
             exact
             render={props => <FormzData {...props} />}
           />
+          <Route path="/register" exact component={UserRegistration} />
+          <Route path="/login" exact component={UserLogin} />
         </Switch>
       </div>
     );
