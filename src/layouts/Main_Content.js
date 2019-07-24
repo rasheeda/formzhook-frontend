@@ -6,16 +6,17 @@ import Developer from "../sections/Developer";
 import FormzData from "../components/formz/FormzData";
 import UserRegistration from "../landing/register";
 import UserLogin from "../landing/login";
+import ProtectedRoute from "../components/protected.route";
 
 class Main_Content extends React.Component {
   render() {
     return (
       <div>
         <Switch>
-          <Route path="/" exact component={Dashboard} />
+          <ProtectedRoute path="/" exact component={Dashboard} />
           <Route path="/formz/" exact component={Formz} />
-          <Route path="/developer/" exact component={Developer} />
-          <Route
+          <ProtectedRoute path="/developer/" exact component={Developer} />
+          <ProtectedRoute
             path="/formz/:id/data"
             exact
             render={props => <FormzData {...props} />}

@@ -34,3 +34,11 @@ export const loadFormDataCount = formId =>
       crossDomain: true
     })
     .get();
+
+export const createForm = (name, description) =>
+  wretch(FORMZ_API_URL)
+    .headers({
+      "Access-Control-Allow-Origin": "*",
+      crossDomain: true
+    })
+    .post({'name': name, 'description': description});

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
 import auth from "../models/auth";
 
-export const ProtectedRoute = ({ component: Component, ...rest }) => {
+const ProtectedRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
@@ -13,7 +13,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
           return (
             <Redirect
               to={{
-                pathname: "/register",
+                pathname: "/login",
                 state: {
                   from: props.location
                 }
@@ -25,3 +25,5 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
     />
   );
 };
+
+export default ProtectedRoute;

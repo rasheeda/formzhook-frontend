@@ -17,9 +17,9 @@ class UserLogin extends React.Component {
         console.log(form.getFieldValue("email"), form.getFieldValue("password"));
         login(form.getFieldValue("email"), form.getFieldValue("password"))
           .json(response => {
-            console.log("response", JSON.stringify(response));
             auth.login(() => {
-              this.props.history.push("/dashboard");
+              console.log('login response:', JSON.stringify(response))
+              // this.props.history.push("/");
             });
           })
           .catch(() => {});

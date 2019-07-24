@@ -3,7 +3,7 @@ import Header_Content from "./Header_Content";
 import Main_Content from "./Main_Content";
 import { BrowserRouter } from "react-router-dom";
 import "antd/dist/antd.css";
-import './main.css';
+import "./main.css";
 import { Layout, Breadcrumb } from "antd";
 
 const { Header, Content, Footer } = Layout;
