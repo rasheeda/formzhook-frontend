@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Dashboard from "../sections/Dashboard";
 import Formz from "../components/formz/Formz";
 import Developer from "../sections/Developer";
@@ -7,14 +7,16 @@ import FormzData from "../components/formz/FormzData";
 import UserRegistration from "../landing/register";
 import UserLogin from "../landing/login";
 import ProtectedRoute from "../components/protected.route";
+import auth from "../models/auth";
 
-class Main_Content extends React.Component {
+class MainContent extends React.Component {
   render() {
     return (
       <div>
         <Switch>
+          {console.log("MainContent isAuthen: ", auth.isAuthenticated())}
           <ProtectedRoute path="/" exact component={Dashboard} />
-          <Route path="/formz/" exact component={Formz} />
+          <ProtectedRoute path="/formz/" exact component={Formz} />
           <ProtectedRoute path="/developer/" exact component={Developer} />
           <ProtectedRoute
             path="/formz/:id/data"
@@ -29,4 +31,4 @@ class Main_Content extends React.Component {
   }
 }
 
-export default Main_Content;
+export default MainContent;

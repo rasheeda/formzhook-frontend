@@ -28,7 +28,7 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
 
-    getFormDataCount("dummyUserAuth")
+    getFormDataCount()
     .json(response => {
       this.setState({
         formzDataCount: response
@@ -39,7 +39,7 @@ class Dashboard extends React.Component {
     .catch(() => {
     });
 
-    getFormDataDateCount("dummyAuth")
+    getFormDataDateCount()
     .json(response => {
         this.setState({
             formzDataDateCount: response

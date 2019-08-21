@@ -19,7 +19,8 @@ class UserLogin extends React.Component {
           .json(response => {
             auth.login(() => {
               console.log('login response:', JSON.stringify(response))
-              // this.props.history.push("/");
+              auth.setToken(response.token);
+              this.props.history.push("/");
             });
           })
           .catch(() => {});

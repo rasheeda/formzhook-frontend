@@ -28,7 +28,7 @@ class Formz extends React.Component {
     createForm(this.state.name, this.state.description)
       .json(response => {
         console.log('response', response);
-        if (response.name == this.state.name) {
+        if (response.name === this.state.name) {
           this.setState({ loading: false, visible: false });
         }
       })

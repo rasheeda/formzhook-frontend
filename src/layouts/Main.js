@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Header_Content from "./Header_Content";
-import Main_Content from "./Main_Content";
+import HeaderContent from "./HeaderContent";
+import MainContent from "./MainContent";
 import { BrowserRouter } from "react-router-dom";
 import "antd/dist/antd.css";
 import "./main.css";
@@ -15,7 +15,7 @@ class Main extends Component {
         <Layout className="layout">
           <Header>
             <div className="logo" />
-            <Header_Content />
+            <HeaderContent />
           </Header>
           <Content style={{ padding: "0 50px" }}>
             <Breadcrumb style={{ margin: "16px 0" }}>
@@ -24,7 +24,7 @@ class Main extends Component {
               <Breadcrumb.Item>API</Breadcrumb.Item>
             </Breadcrumb>
             <div className="mainContainer">
-              <Main_Content />
+              <MainContent />
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>

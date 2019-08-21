@@ -1,44 +1,28 @@
 import wretch from "wretch";
 import { FORMZ_API_URL } from "../../constants";
+import {authHeader} from "../../models/authHeader";
 
-export const loadForm = ({ userAuth }) =>
+export const loadForm = () =>
   wretch(FORMZ_API_URL)
-    .headers({
-      "Access-Control-Allow-Origin": "*",
-      crossDomain: true
-    })
+    .headers(authHeader())
     .get();
 
 export const updateForm = (id, data) =>
   wretch(FORMZ_API_URL + "/" + id)
-    .headers({
-      "Access-Control-Allow-Origin": "*",
-      crossDomain: true,
-      "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, HEAD"
-    })
+    .headers(authHeader())
     .put({ name: data.name, description: data.description });
 
 export const deleteForm = id =>
   wretch(FORMZ_API_URL + "/" + id)
-    .headers({
-      "Access-Control-Allow-Origin": "*",
-      crossDomain: true,
-      "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, HEAD"
-    })
+    .headers(authHeader())
     .delete();
 
 export const loadFormDataCount = formId =>
   wretch(FORMZ_API_URL + "/" + formId + "/data/count")
-    .headers({
-      "Access-Control-Allow-Origin": "*",
-      crossDomain: true
-    })
+    .headers(authHeader())
     .get();
 
 export const createForm = (name, description) =>
   wretch(FORMZ_API_URL)
-    .headers({
-      "Access-Control-Allow-Origin": "*",
-      crossDomain: true
-    })
+    .headers(authHeader())
     .post({'name': name, 'description': description});

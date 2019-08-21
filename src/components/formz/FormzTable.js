@@ -178,7 +178,7 @@ class EditableTable extends React.Component {
   }
 
   componentWillMount() {
-    loadForm("dummyUserAuth")
+    loadForm()
       .json(response => {
         this.setState({
           formzData: response,
