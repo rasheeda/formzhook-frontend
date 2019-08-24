@@ -1,10 +1,10 @@
-class Auth {
+import decode from "jwt-decode";
 
+class Auth {
   constructor() {
-    if (this.getToken()) {
+    if (this.getAccessToken()) {
       this.authenticated = true;
-    }
-    else {
+    } else {
       this.authenticated = false;
     }
   }
@@ -23,18 +23,39 @@ class Auth {
     return this.authenticated;
   }
 
-  getToken() {
-    return localStorage.getItem("user");
+  getAccessToken() {
+    return localStorage.getItem("access_token");
   }
 
-  setToken(token) {
-    localStorage.setItem('user', token)
+  setAccessToken(token) {
+    localStorage.setItem("access_token", token);
   }
 
   loggedIn = () => {
     // Checks if there is a saved token and it's still valid
-    const token = this.getToken(); // Getting token from localstorage
-    return !!token
+    const token = this.getAccessToken();
+    return !!token;
+  };
+
+  setRefreshToken(token) {
+    localStorage.setItem("refresh_token", token);
+  }
+
+  getRefreshToken() {
+    localStorage.getItem("refresh_token");
+  }
+
+  isTokenExpired = () => {
+    try {
+      const decoded = decode(this.getAccessToken());
+      if (decoded.exp < Date.now() / 1000) {
+        // Checking if token is expired.
+        return true;
+      } else return false;
+    } catch (err) {
+      console.log("expired check failed! Line 42: AuthService.js");
+      return false;
+    }
   };
 }
 

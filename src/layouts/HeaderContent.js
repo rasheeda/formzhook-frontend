@@ -32,7 +32,10 @@ function HeaderContent() {
 
 function logout() {
   auth.logout(() => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+
+    //call the API to logout as well
   });
   return (
     <Redirect

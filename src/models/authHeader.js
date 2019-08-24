@@ -6,7 +6,7 @@ export function authHeader() {
     return {
       "Access-Control-Allow-Origin": "*",
       crossDomain: true,
-      Authorization: `Bearer ${auth.getToken()}`,
+      Authorization: `Bearer ${auth.getAccessToken()}`,
       "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, HEAD",
     };
   } else {
