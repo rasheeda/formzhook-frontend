@@ -4,6 +4,7 @@ import { login } from "../services/auth";
 import auth from "../models/auth";
 
 class UserLogin extends React.Component {
+
   state = {
     confirmDirty: false,
     autoCompleteResult: []
@@ -19,7 +20,8 @@ class UserLogin extends React.Component {
           .json(response => {
             auth.login(() => {
               console.log('login response:', JSON.stringify(response))
-              auth.setToken(response.token);
+              auth.setRefreshToken(response.refresh_token);
+              auth.setAccessToken(response.access_token);
               this.props.history.push("/");
             });
           })

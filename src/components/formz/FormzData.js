@@ -2,6 +2,7 @@ import React from "react";
 import { FORMZ_API_URL, STATUSES } from "../../constants";
 import wretch from "wretch";
 import FormzDataItem from "./FormzDataItem";
+import {authHeader} from "../../models/authHeader";
 
 export default class FormzData extends React.Component {
   constructor(props) {
@@ -14,24 +15,17 @@ export default class FormzData extends React.Component {
   }
 
   componentDidMount() {
-    wretch(`${FORMZ_API_URL}/${this.props.match.params.id}/data`)
-      .headers({
-        "Access-Control-Allow-Origin": "*",
-        crossDomain: true
-      })
+    wretch(`${FORMZ_API_URL}/${this.props.match.params.unique_id}/data`)
+      .headers(authHeader())
       .query({
-        // TODO: post the user info here user auth
       })
       .get()
       .json(response => {
+        console.log('results: ', response)
         this.setState({
           FormzDataResults: response,
           FormzDataStatus: STATUSES.success
         });
-
-        // console.log(
-        //   "formzDataResults: " + JSON.stringify(this.state.FormzDataResults)
-        // );
       })
       .catch(() => {
         this.setState({

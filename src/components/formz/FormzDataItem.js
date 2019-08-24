@@ -32,11 +32,22 @@ function createTableBody(key, value, i) {
   );
 }
 
+const myJson = {
+  "Student": { name: "Jack", email: "jack@xyz.com" },
+  "Student id": 888,
+  "Sponsors": [
+    { name: "john", email: "john@@xyz.com" },
+    { name: "jane", email: "jane@@xyz.com" }
+  ]
+};
+
 const FormDataElementContainer = ({ item }) => {
   return (
     <div
       style={{ background: "#ECECEC", padding: "20px", marginBottom: "20px" }}
     >
+      {console.log(item.data)}
+      {console.log(myJson)}
       <Row gutter={16}>
         <Col span={12}>
           <Card title={item.name} bordered={true}>
@@ -56,7 +67,7 @@ class FormzDataItem extends React.Component {
     return (
       <div>
         {this.props.results.map(item => (
-          <FormDataElementContainer item={item} />
+          <FormDataElementContainer item={item} key={item.id}/>
         ))}
       </div>
     );

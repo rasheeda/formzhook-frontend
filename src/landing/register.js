@@ -16,9 +16,8 @@ class UserRegistration extends React.Component {
         const form = this.props.form;
         register(form.getFieldValue('email'), form.getFieldValue('password'))
           .json(response => {
-              console.log('response', JSON.stringify(response));
               auth.login(() => {
-                this.props.history.push("/dashboard");
+                this.props.history.push("/login");
               })
           })
           .catch(() => {

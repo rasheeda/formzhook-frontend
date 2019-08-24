@@ -116,6 +116,8 @@ class EditableTable extends React.Component {
           <span>
             <Tag color="green">{text} data items</Tag>
             <Divider type="vertical" />
+
+            {/* link to component FormzData */}
             <Link to={"/formz/" + record.unique_id + "/data"}>
               <Button type="primary">View Data</Button>
             </Link>
@@ -177,15 +179,13 @@ class EditableTable extends React.Component {
     ];
   }
 
-  componentWillMount() {
+  componentDidMount() {
     loadForm()
       .json(response => {
         this.setState({
           formzData: response,
           formzStatus: STATUSES.success
         });
-
-        console.log("formzData: " + JSON.stringify(this.state.formzData));
       })
       .catch(() => {
         this.setState({
@@ -208,8 +208,9 @@ class EditableTable extends React.Component {
       const newData = [...this.state.formzData];
       const index = newData.findIndex(item => key === item.id);
       if (index > -1) {
-        updateForm(key, row);
         const item = newData[index];
+
+        updateForm(item.unique_id, row);
         newData.splice(index, 1, {
           ...item,
           ...row
@@ -246,8 +247,8 @@ class EditableTable extends React.Component {
       const newData = [...this.state.formzData];
       const index = newData.findIndex(item => key === item.id);
       if (index > -1) {
-        deleteForm(key);
         const item = newData[index];
+        deleteForm(item.unique_id);
         newData.splice(index, 1);
         this.setState({
           formzData: newData,

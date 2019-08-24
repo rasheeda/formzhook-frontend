@@ -20,7 +20,6 @@ function HeaderContent() {
       <Menu.Item key="3">
         <Link to="/developers">API</Link>
       </Menu.Item>
-      {console.log("isauthenticated: ", auth.isAuthenticated())}
       {auth.isAuthenticated() === true && (
         <Menu.Item key="4">
           <Link onClick={logout}>Logout</Link>
@@ -32,15 +31,14 @@ function HeaderContent() {
 
 function logout() {
   auth.logout(() => {
-    localStorage.removeItem("user");
+    return (
+      <Redirect
+        to={{
+          pathname: "/login"
+        }}
+      />
+    );
   });
-  return (
-    <Redirect
-      to={{
-        pathname: "/login"
-      }}
-    />
-  );
 }
 
 export default HeaderContent;

@@ -14,14 +14,13 @@ class MainContent extends React.Component {
     return (
       <div>
         <Switch>
-          {console.log("MainContent isAuthen: ", auth.isAuthenticated())}
           <ProtectedRoute path="/" exact component={Dashboard} />
           <ProtectedRoute path="/formz/" exact component={Formz} />
           <ProtectedRoute path="/developer/" exact component={Developer} />
           <ProtectedRoute
-            path="/formz/:id/data"
+            path="/formz/:unique_id/data"
             exact
-            render={props => <FormzData {...props} />}
+            component={props => <FormzData {...props} />}
           />
           <Route path="/register" exact component={UserRegistration} />
           <Route path="/login" exact component={UserLogin} />
