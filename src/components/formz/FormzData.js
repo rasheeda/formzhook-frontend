@@ -15,7 +15,7 @@ export default class FormzData extends React.Component {
   }
 
   componentDidMount() {
-    wretch(`${FORMZ_API_URL}/${this.props.match.params.unique_id}/data`)
+    wretch(`${FORMZ_API_URL}/${this.props.match.params.unique_id}/app/data`)
       .headers(authHeader())
       .query({
       })
