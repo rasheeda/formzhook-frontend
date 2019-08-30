@@ -2,12 +2,11 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Dashboard from "../sections/Dashboard";
 import Formz from "../components/formz/Formz";
-import Developer from "../sections/Developer";
+import Developer from "../components/developer";
 import FormzData from "../components/formz/FormzData";
 import UserRegistration from "../landing/register";
 import UserLogin from "../landing/login";
 import ProtectedRoute from "../components/protected.route";
-import auth from "../models/auth";
 
 class MainContent extends React.Component {
   render() {
@@ -16,7 +15,7 @@ class MainContent extends React.Component {
         <Switch>
           <ProtectedRoute path="/" exact component={Dashboard} />
           <ProtectedRoute path="/formz/" exact component={Formz} />
-          <ProtectedRoute path="/developer/" exact component={Developer} />
+          <ProtectedRoute path="/developers/" exact component={Developer} />
           <ProtectedRoute
             path="/formz/:unique_id/data"
             exact
@@ -31,3 +30,4 @@ class MainContent extends React.Component {
 }
 
 export default MainContent;
+

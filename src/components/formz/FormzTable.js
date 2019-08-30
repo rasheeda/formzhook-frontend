@@ -18,7 +18,7 @@ import {
   loadForm,
   updateForm,
   deleteForm
-} from "./services";
+} from "../services";
 
 const EditableContext = React.createContext();
 

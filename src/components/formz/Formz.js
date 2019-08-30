@@ -2,7 +2,7 @@ import React from "react";
 import "./Form.css";
 import EditableFormTable from "./FormzTable";
 import { Modal, Button, Input } from "antd";
-import {createForm} from "./services";
+import {createForm} from "../services";
 
 class Formz extends React.Component {
   constructor(props) {

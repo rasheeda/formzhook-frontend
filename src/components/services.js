@@ -1,6 +1,6 @@
 import wretch from "wretch";
-import { FORMZ_API_URL } from "../../constants";
-import {authHeader} from "../../models/authHeader";
+import { FORMZ_API_URL } from "../constants";
+import {authHeader} from "../models/authHeader";
 
 export const loadForm = () =>
   wretch(FORMZ_API_URL)
@@ -26,3 +26,13 @@ export const createForm = (name, description) =>
   wretch(FORMZ_API_URL)
     .headers(authHeader())
     .post({'name': name, 'description': description});
+
+export const generateApiKey = () =>
+wretch(`${FORMZ_API_URL}/users/key/generate`)
+    .headers(authHeader())
+    .post();
+
+export const getApiKey = () => 
+wretch(`${FORMZ_API_URL}/users/key`)
+    .headers(authHeader())
+    .get();
