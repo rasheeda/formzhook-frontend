@@ -10,6 +10,11 @@ import {
   Row
 } from "antd";
 import { generateApiKey, getApiKey } from "./services";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { defaultStyle } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 function confirm(e) {
   generateApiKey()
@@ -31,7 +36,10 @@ const API_KEY_COLUMNS = [
   {
     title: "API Key",
     dataIndex: "api_key",
-    key: "api_key"
+    key: "api_key",
+    render: key => (
+      <SyntaxHighlighter language="http" style={defaultStyle}>{key}</SyntaxHighlighter>
+    )
   },
   {
     title: "Action",
@@ -95,14 +103,15 @@ class Developer extends React.Component {
             <Panel header="Post Data to A Form" key="1">
               <p>To post data, the following parameters are required</p>
               <p>
-                POST{" "}
                 <strong>
-                  <i>https://formzhook.io/api/formz/$form_unique_id/data</i>
+                  <SyntaxHighlighter language="http" style={dracula}>
+                    POST: https://formzhook.io/api/formz/[form_unique_id]/data
+                  </SyntaxHighlighter>
                 </strong>
               </p>
-              <div style={{ background: "#ECECEC", padding: "30px" }}>
-                <Row gutter={16}>
-                  <Col span={8}>
+              <div style={{ background: "#fafafa", padding: "10px" }}>
+                <Row>
+                  <Col span={24}>
                     <Card title="Request Body" bordered={false}>
                       <p>
                         <strong>name</strong>: Name of the form data
@@ -121,40 +130,34 @@ class Developer extends React.Component {
                       </p>
                     </Card>
                   </Col>
-                  <Col span={8}>
+                  <Col span={12}>
                     <Card title="Example Request" bordered={false}>
-                      <pre>
-                        <code>
-                          {`
-                            curl --request POST \
-                            --url http://127.0.0.1:5000/api/formz/30f01227ecb64f5b92cc880ba2ed1a48/data \
-                            --header 'Accept: */*' \
-                            --header 'Content-Type: application/json' \
-                            --data '{\n	"name": "Test new",\n	"description": "also not needed",\n	"data": {\n	  "userId": "1",\n	  "id": "1",\n	  "title": "delectus aut autem",\n	  "completed": "false"\n	},\n	"api_key":"1306c7c4874ca7737518047bc24b11ca3eea97d84d2e41435be15ce88d9c263e"\n}'
-                          `}
-                        </code>
-                      </pre>
+                      <SyntaxHighlighter language="http" style={dracula}>
+                        {`
+  curl --request POST \
+  --url https://formzhook.io/api/formz/30f01227ecb64f5b92cc880ba2ed1a48/data \
+  --data '{\n	"name": "Test new",\n	"description": "also not needed",\n	"data": {\n	  "userId": "1",\n	  "id": "1",\n	  "title": "delectus aut autem",\n	  "completed": "false"\n	},\n	"api_key":"1306c7c4874ca7737518047bc24b11ca3eea97d84d2e41435be15ce88d9c263e"\n}'
+`}
+                      </SyntaxHighlighter>
                     </Card>
                   </Col>
-                  <Col span={8}>
-                    <Card title="Response" bordered={false}>
-                      <pre>
-                        <code>
-                          {`
-                            {
-                              "name": "Test new",
-                              "description": "also not needed",
-                              "data": {
-                                "userId": "1",
-                                "id": "1",
-                                "title": "delectus aut autem",
-                                "completed": "false"
-                              },
-                              "api_key":"1306c7c4874ca7737518047bc24b11ca3eea97d84d2e41435be15ce88d9c263e"
-                            }
-                          `}
-                        </code>
-                      </pre>
+                  <Col span={12}>
+                    <Card title="Example Response" bordered={false}>
+                      <SyntaxHighlighter language="json" style={atomOneDark}>
+                        {`
+{
+  "name": "Test new",
+  "description": "also not needed",
+  "data": {
+    "userId": "1",
+    "id": "1",
+    "title": "delectus aut autem",
+    "completed": "false"
+  },
+  "api_key":"1306c7c4874ca7737518047bc24b11ca3eea97d84d2e41435be15ce88d9c263e"
+}
+`}
+                      </SyntaxHighlighter>
                     </Card>
                   </Col>
                 </Row>
@@ -162,29 +165,25 @@ class Developer extends React.Component {
             </Panel>
             <Panel header="Get Form Data" key="2">
               <p>
-                GET{" "}
                 <strong>
-                  <i>https://formzhook.io/api/formz/$form_unique_id/data</i>
+                <SyntaxHighlighter language="http" style={dracula}>GET: https://formzhook.io/api/formz/[form_unique_id]/data</SyntaxHighlighter>
                 </strong>
               </p>
-
-              <pre>
-                <code>
-                  {`
-                            {
-                              "name": "Test new",
-                              "description": "also not needed",
-                              "data": {
-                                "userId": "1",
-                                "id": "1",
-                                "title": "delectus aut autem",
-                                "completed": "false"
-                              },
-                              "api_key":"1306c7c4874ca7737518047bc24b11ca3eea97d84d2e41435be15ce88d9c263e"
-                            }
-                          `}
-                </code>
-              </pre>
+              <SyntaxHighlighter language="json" style={dark}>
+                {`
+                    {
+                      "name": "Test new",
+                      "description": "also not needed",
+                      "data": {
+                        "userId": "1",
+                        "id": "1",
+                        "title": "delectus aut autem",
+                        "completed": "false"
+                      },
+                      "api_key":"1306c7c4874ca7737518047bc24b11ca3eea97d84d2e41435be15ce88d9c263e"
+                    }
+                  `}
+              </SyntaxHighlighter>
             </Panel>
           </Collapse>
         </div>
