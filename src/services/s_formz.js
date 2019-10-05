@@ -1,6 +1,6 @@
 import wretch from "wretch";
-import { FORMZ_API_URL } from "../constants";
-import {authHeader} from "../models/authHeader";
+import { FORMZ_API_URL } from "../utils/u_constants";
+import {authHeader} from "../utils/u_authHeader";
 
 export const loadForm = () =>
   wretch(FORMZ_API_URL)

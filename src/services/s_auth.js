@@ -1,5 +1,5 @@
 import wretch from "wretch";
-import auth from "../models/auth";
+import auth from "../utils/u_auth";
 
 const API_URL = "http://127.0.0.1:5000/api";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
-import "./FormzTable.css";
+import "./styles.css";
 import {
   Table,
   Input,
@@ -12,13 +12,9 @@ import {
   Popconfirm,
   Alert
 } from "antd";
-import { STATUSES } from "../../constants";
+import { STATUSES } from "../../utils/u_constants";
 import { Link } from "react-router-dom";
-import {
-  loadForm,
-  updateForm,
-  deleteForm
-} from "../services";
+import { loadForm, updateForm, deleteForm } from "../../services/s_formz";
 
 const EditableContext = React.createContext();
 

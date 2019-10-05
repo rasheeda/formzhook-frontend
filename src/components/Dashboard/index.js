@@ -1,10 +1,9 @@
 import React from "react";
 import { Row, Col } from "antd";
-import "./dashboard.css";
+import "./styles.css";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -13,34 +12,31 @@ import {
   LineChart,
   Line
 } from "recharts";
-import {getFormDataCount, getFormDataDateCount} from "./dashboard_services";
+import { getFormDataCount, getFormDataDateCount } from "../../services/s_dashboard";
 
 class Dashboard extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            formzDataCount: {},
-            formzDataDateCount: {}
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      formzDataCount: {},
+      formzDataDateCount: {}
+    };
+  }
 
   componentDidMount() {
     getFormDataCount()
-    .json(response => {
-      this.setState({
-        formzDataCount: response
-      });
-    })
-    .catch(() => {
-    });
-
-    getFormDataDateCount()
-    .json(response => {
+      .json(response => {
         this.setState({
-            formzDataDateCount: response
-        })
-    })
+          formzDataCount: response
+        });
+      })
+      .catch(() => {});
+
+    getFormDataDateCount().json(response => {
+      this.setState({
+        formzDataDateCount: response
+      });
+    });
   }
 
   render() {
@@ -121,11 +117,7 @@ class Dashboard extends React.Component {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Line
-                    type="monotone"
-                    dataKey="count"
-                    stroke="#82ca9d"
-                  />
+                  <Line type="monotone" dataKey="count" stroke="#82ca9d" />
                 </LineChart>
               </div>
             </Col>

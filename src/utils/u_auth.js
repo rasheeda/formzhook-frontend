@@ -1,5 +1,5 @@
 import decode from "jwt-decode";
-import {logoutAccessToken, logoutRefreshToken} from "../services/auth";
+import {logoutAccessToken, logoutRefreshToken} from "../services/s_auth";
 
 class Auth {
   constructor() {

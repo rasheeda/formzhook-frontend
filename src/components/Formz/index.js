@@ -1,8 +1,8 @@
 import React from "react";
-import "./Form.css";
-import EditableFormTable from "./FormzTable";
+import "./styles.css";
+import EditableFormTable from "../FormzTable";
 import { Modal, Button, Input } from "antd";
-import {createForm} from "../services";
+import {createForm} from "../../services/s_formz";
 
 class Formz extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Formz extends React.Component {
       description: ""
     };
   }
-
+  
   showModal = () => {
     this.setState({
       visible: true

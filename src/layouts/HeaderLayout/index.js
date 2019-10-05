@@ -1,9 +1,9 @@
 import React from "react";
 import { Menu } from "antd";
 import { Link, Redirect } from "react-router-dom";
-import auth from "../models/auth";
+import auth from "../../utils/u_auth";
 
-function HeaderContent() {
+function HeaderLayout() {
   return (
     <Menu
       theme="dark"
@@ -41,4 +41,4 @@ function logout() {
   });
 }
 
-export default HeaderContent;
+export default HeaderLayout;

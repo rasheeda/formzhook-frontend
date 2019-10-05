@@ -1,5 +1,5 @@
-import {refreshAccessToken} from "../services/auth";
-import auth from '../models/auth';
+import {refreshAccessToken} from "../services/s_auth";
+import auth from './u_auth';
 
 export function authHeader() {
 

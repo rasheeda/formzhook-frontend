@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Alert, Button } from "antd";
-import { login } from "../services/auth";
-import auth from "../models/auth";
+import { login } from "../../services/s_auth";
+import auth from "../../utils/u_auth";
 import { Link } from "react-router-dom";
 
 class UserLogin extends React.Component {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Checkbox, Button, Alert } from "antd";
-import { register } from "../services/auth";
-import auth from "../models/auth";
+import { register } from "../../services/s_auth";
+import auth from "../../utils/u_auth";
 
 class UserRegistration extends React.Component {
   state = {

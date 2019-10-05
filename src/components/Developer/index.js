@@ -9,7 +9,7 @@ import {
   Col,
   Row
 } from "antd";
-import { generateApiKey, getApiKey } from "./services";
+import { generateApiKey, getApiKey } from "../../services/s_formz";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -38,7 +38,9 @@ const API_KEY_COLUMNS = [
     dataIndex: "api_key",
     key: "api_key",
     render: key => (
-      <SyntaxHighlighter language="http" style={defaultStyle}>{key}</SyntaxHighlighter>
+      <SyntaxHighlighter language="http" style={defaultStyle}>
+        {key}
+      </SyntaxHighlighter>
     )
   },
   {
@@ -166,7 +168,9 @@ class Developer extends React.Component {
             <Panel header="Get Form Data" key="2">
               <p>
                 <strong>
-                <SyntaxHighlighter language="http" style={dracula}>GET: https://formzhook.io/api/formz/[form_unique_id]/data</SyntaxHighlighter>
+                  <SyntaxHighlighter language="http" style={dracula}>
+                    GET: https://formzhook.io/api/formz/[form_unique_id]/data
+                  </SyntaxHighlighter>
                 </strong>
               </p>
               <SyntaxHighlighter language="json" style={dark}>

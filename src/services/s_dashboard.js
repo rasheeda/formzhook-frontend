@@ -1,7 +1,6 @@
 import wretch from "wretch";
-import { FORMZ_API_URL } from "../constants";
-import auth from "../models/auth";
-import {authHeader} from "../models/authHeader";
+import { FORMZ_API_URL } from "../utils/u_constants";
+import {authHeader} from "../utils/u_authHeader";
 
 export const getFormDataCount = () =>
   wretch(`${FORMZ_API_URL}/data/graph`)

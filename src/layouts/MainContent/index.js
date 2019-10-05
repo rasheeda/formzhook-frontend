@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Dashboard from "../sections/Dashboard";
-import Formz from "../components/formz/Formz";
-import Developer from "../components/developer";
-import FormzData from "../components/formz/FormzData";
-import UserRegistration from "../landing/register";
-import UserLogin from "../landing/login";
-import ProtectedRoute from "../components/protected.route";
+import Dashboard from "../../components/Dashboard"
+import Formz from "../../components/Formz";
+import Developer from "../../components/Developer";
+import FormzData from "../../components/FormzData";
+import UserRegistration from "../../pages/Register";
+import UserLogin from "../../pages/Login";
+import ProtectedRoute from "../../utils/u_protected.route";
 
 class MainContent extends React.Component {
   render() {
