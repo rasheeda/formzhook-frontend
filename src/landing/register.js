@@ -1,26 +1,38 @@
 import React from "react";
-import { Form, Input, Checkbox, Button } from "antd";
+import { Form, Input, Checkbox, Button, Alert } from "antd";
 import { register } from "../services/auth";
 import auth from "../models/auth";
 
 class UserRegistration extends React.Component {
   state = {
     confirmDirty: false,
-    autoCompleteResult: []
+    autoCompleteResult: [],
+    error: false
   };
 
+  componentDidMount() {
+    if (auth.isAuthenticated()) {
+      this.props.history.push("/");
+    }
+  }
+
   handleSubmit = e => {
+    this.setState({ error: false });
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, data) => {
       if (!err) {
         const form = this.props.form;
-        register(form.getFieldValue('email'), form.getFieldValue('password'))
+        register(form.getFieldValue("email"), form.getFieldValue("password"))
           .json(response => {
-              auth.login(() => {
-                this.props.history.push("/login");
-              })
+            console.log(response);
+            auth.login(() => {
+              auth.setRefreshToken(response.refresh_token);
+              auth.setAccessToken(response.access_token);
+              this.props.history.push("/");
+            });
           })
           .catch(() => {
+            this.setState({ error: true });
           });
       }
     });
@@ -88,6 +100,14 @@ class UserRegistration extends React.Component {
 
     return (
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+        {this.state.error && (
+          <Alert
+            message="Error"
+            description="Email address already exists. Please try again with a different email."
+            type="error"
+            showIcon
+          />
+        )}
         <Form.Item label="E-mail">
           {getFieldDecorator("email", {
             rules: [

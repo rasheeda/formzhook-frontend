@@ -1,31 +1,39 @@
 import React from "react";
-import { Form, Input, Checkbox, Button } from "antd";
+import { Form, Input, Alert, Button } from "antd";
 import { login } from "../services/auth";
 import auth from "../models/auth";
+import { Link } from "react-router-dom";
 
 class UserLogin extends React.Component {
-
   state = {
     confirmDirty: false,
-    autoCompleteResult: []
+    autoCompleteResult: [],
+    isWrongLogin: false
   };
 
+  componentDidMount() {
+    if (auth.isAuthenticated()) {
+      this.props.history.push("/");
+    }
+  }
+
   handleSubmit = e => {
+    this.setState({ isWrongLogin: false });
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, data) => {
       if (!err) {
         const form = this.props.form;
-        console.log(form.getFieldValue("email"), form.getFieldValue("password"));
         login(form.getFieldValue("email"), form.getFieldValue("password"))
           .json(response => {
             auth.login(() => {
-              console.log('login response:', JSON.stringify(response))
               auth.setRefreshToken(response.refresh_token);
               auth.setAccessToken(response.access_token);
-              this.props.history.push("/");
+              window.location.reload();
             });
           })
-          .catch(() => {});
+          .catch(() => {
+            this.setState({ isWrongLogin: true });
+          });
       }
     });
   };
@@ -58,6 +66,14 @@ class UserLogin extends React.Component {
 
     return (
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+        {this.state.isWrongLogin && (
+          <Alert
+            message="Error"
+            description="Wrong email or password. Please try again."
+            type="error"
+            showIcon
+          />
+        )}
         <Form.Item label="E-mail">
           {getFieldDecorator("email", {
             rules: [
@@ -89,6 +105,7 @@ class UserLogin extends React.Component {
           <Button type="primary" htmlType="submit">
             Login
           </Button>
+          {" "}<Link to="/register">Register</Link>
         </Form.Item>
       </Form>
     );

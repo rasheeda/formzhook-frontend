@@ -19,7 +19,6 @@ class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             formzDataCount: {},
             formzDataDateCount: {}
@@ -27,14 +26,11 @@ class Dashboard extends React.Component {
     }
 
   componentDidMount() {
-
     getFormDataCount()
     .json(response => {
       this.setState({
         formzDataCount: response
       });
-
-      console.log("formzDataCount: " + JSON.stringify(this.state.formzDataCount));
     })
     .catch(() => {
     });
