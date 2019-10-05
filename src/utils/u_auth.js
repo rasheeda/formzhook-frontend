@@ -1,5 +1,5 @@
 import decode from "jwt-decode";
-import {logoutAccessToken, logoutRefreshToken} from "../services/s_auth";
+import { logoutAccessToken, logoutRefreshToken } from "../services/s_auth";
 
 class Auth {
   constructor() {
@@ -19,18 +19,16 @@ class Auth {
     this.authenticated = false;
 
     logoutAccessToken()
-    .json(response => {
-        console.log('logout revoked access token response:', response)
+      .json(response => {
         localStorage.removeItem("access_token");
-    })
-    .catch(() => {});
+      })
+      .catch(() => {});
 
     logoutRefreshToken()
-    .json(response => {
-        console.log('logout revoked token refresh response:', response)
+      .json(response => {
         localStorage.removeItem("refresh_token");
-    })
-    .catch(() => {});
+      })
+      .catch(() => {});
 
     cb();
   }
@@ -69,7 +67,6 @@ class Auth {
         return true;
       } else return false;
     } catch (err) {
-      console.log("token expired. Request a new one");
       return true;
     }
   };

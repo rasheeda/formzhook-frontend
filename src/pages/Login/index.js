@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Alert, Button } from "antd";
+import { Form, Input, Alert, Button, Divider } from "antd";
 import { login } from "../../services/s_auth";
 import auth from "../../utils/u_auth";
 import { Link } from "react-router-dom";
@@ -28,7 +28,10 @@ class UserLogin extends React.Component {
             auth.login(() => {
               auth.setRefreshToken(response.refresh_token);
               auth.setAccessToken(response.access_token);
-              window.location.reload();
+              this.props.history.push("/");
+              setTimeout(function() {
+                window.location.reload();
+              }, 1000);
             });
           })
           .catch(() => {
@@ -104,8 +107,9 @@ class UserLogin extends React.Component {
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
             Login
-          </Button>
-          {" "}<Link to="/register">Register</Link>
+          </Button>{" "}
+          <Divider type="vertical" />
+          <Link to="/register">Register</Link>
         </Form.Item>
       </Form>
     );

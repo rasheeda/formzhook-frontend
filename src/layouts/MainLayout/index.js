@@ -1,39 +1,54 @@
-import React, { Component } from "react";
+import React from "react";
 import HeaderLayout from "../HeaderLayout";
 import MainContent from "../MainContent";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Link, Redirect } from "react-router-dom";
 import "antd/dist/antd.css";
 import "./main.css";
-import { Layout, Breadcrumb } from "antd";
+import { Layout, Divider } from "antd";
+import auth from "../../utils/u_auth";
+import PagesLayout from "../../pages/PagesLayout";
 
 const { Header, Content, Footer } = Layout;
 
-class MainLayout extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Layout className="layout">
-          <Header>
-            <div className="logo" />
-            <HeaderLayout />
-          </Header>
-          <Content style={{ padding: "0 50px" }}>
-            <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
-              <Breadcrumb.Item>Formz</Breadcrumb.Item>
-              <Breadcrumb.Item>API</Breadcrumb.Item>
-            </Breadcrumb>
-            <div className="mainContainer">
-              <MainContent />
-            </div>
-          </Content>
-          <Footer style={{ textAlign: "center" }}>
-            Formz API Service, 2019
-          </Footer>
-        </Layout>
-      </BrowserRouter>
-    );
+const MainLayout = () => {
+  if (!auth.isAuthenticated()) {
+    return <PagesLayout />;
   }
+
+  return (
+    <BrowserRouter>
+      <Layout className="layout">
+        <Header>
+          <div className="logo" />
+          <HeaderLayout />
+        </Header>
+        <Content
+          style={{ padding: "0 50px", maxWidth: 1300, margin: "0 auto 0 auto" }}
+        >
+          <div className="mainContainer">
+            <MainContent />
+          </div>
+        </Content>
+        <Footer style={{ textAlign: "center" }}>
+          Formz API Service, {new Date().getFullYear()}{" "}
+          <Divider type="vertical" />{" "}
+          {auth.isAuthenticated() === true && (
+            <Link onClick={logout}>Logout</Link>
+          )}
+        </Footer>
+      </Layout>
+    </BrowserRouter>
+  );
+};
+
+function logout() {
+  auth.logout(() => {
+    return (
+      setTimeout(function() {
+        window.location.reload();
+      }, 1000)
+    );
+  });
 }
 
 export default MainLayout;

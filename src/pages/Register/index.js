@@ -1,7 +1,8 @@
 import React from "react";
-import { Form, Input, Checkbox, Button, Alert } from "antd";
+import { Form, Input, Checkbox, Button, Alert, Divider } from "antd";
 import { register } from "../../services/s_auth";
 import auth from "../../utils/u_auth";
+import { Link } from "react-router-dom";
 
 class UserRegistration extends React.Component {
   state = {
@@ -161,6 +162,8 @@ class UserRegistration extends React.Component {
           <Button type="primary" htmlType="submit">
             Register
           </Button>
+          <Divider type="vertical" />
+          <Link to="/login">Login</Link>
         </Form.Item>
       </Form>
     );

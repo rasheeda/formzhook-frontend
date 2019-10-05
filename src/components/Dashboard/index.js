@@ -12,14 +12,16 @@ import {
   LineChart,
   Line
 } from "recharts";
-import { getFormDataCount, getFormDataDateCount } from "../../services/s_dashboard";
+import { getFormDataCount, getFormDataDateCount, getTotalFormz, getTotalFormzData } from "../../services/s_dashboard";
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       formzDataCount: {},
-      formzDataDateCount: {}
+      formzDataDateCount: {},
+      totalFormzCreated: '',
+      totalFormzDataCreated: ''
     };
   }
 
@@ -37,6 +39,18 @@ class Dashboard extends React.Component {
         formzDataDateCount: response
       });
     });
+
+    getTotalFormz().json(response => {
+      this.setState({
+        totalFormzCreated: response
+      });
+    });
+
+    getTotalFormzData().json(response => {
+      this.setState({
+        totalFormzDataCreated: response
+      });
+    });
   }
 
   render() {
@@ -47,7 +61,7 @@ class Dashboard extends React.Component {
             <Col className="gutter-row" span={8}>
               <div className="dashboard-value-content-box">
                 <div className="dashboard-value-content-data formz-count">
-                  20
+                  {this.state.totalFormzCreated}
                 </div>
                 <div className="dashboard-value-content-title">Total Formz</div>
               </div>
@@ -55,7 +69,7 @@ class Dashboard extends React.Component {
             <Col className="gutter-row" span={8}>
               <div className="dashboard-value-content-box">
                 <div className="dashboard-value-content-data formz-data-count">
-                  8
+                  {this.state.totalFormzDataCreated}
                 </div>
                 <div className="dashboard-value-content-title">
                   Total Formz Data
