@@ -3,8 +3,10 @@
 }
 
 .dashboard-value-content-box {
-  background-color: #e5e5e5;
+  background-color: #2d4059;
   padding: 20px;
+  color: #ffffff;
+  border-radius: 3px;
 }
 
 .dashboard-value-content-title {
@@ -24,15 +26,15 @@
 }
 
 .formz-count {
-  color: black;
+  color: #5f85db;
 }
 
 .formz-data-count {
-  color: aqua;
+  color: #ffc045;
 }
 
 .formz-something-count {
-  color: cornflowerblue;
+  color: #62a388;
 }
 
 .formz-data-count-graph {
