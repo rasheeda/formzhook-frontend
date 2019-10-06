@@ -21,3 +21,8 @@ export const getTotalFormzData = () =>
   wretch(`${FORMZ_API_URL}/data/total/count`)
     .headers(authHeader())
     .get();
+
+export const getTotalDailyFormzData = () =>
+wretch(`${FORMZ_API_URL}/data/total/count/daily`)
+  .headers(authHeader())
+  .get();

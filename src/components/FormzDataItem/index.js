@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Col, Row } from "antd";
+import { Card, Col, Row, Divider } from "antd";
 import "./styles.css";
 import ReactJson from "react-json-view";
 import { JsonToTable } from "react-json-to-table";
@@ -7,18 +7,19 @@ import { JsonToTable } from "react-json-to-table";
 const FormDataElementContainer = ({ item }) => {
   return (
     <div
-      style={{ background: "#ECECEC", padding: "20px", marginBottom: "20px" }}
+      style={{padding: "10px", marginBottom: "10px" }}
     >
       <Row gutter={16}>
         <Col span={12}>
-          <Card title={item.name} bordered={true}>
+          <Card bordered={false}>
             <JsonToTable json={item.data} />
           </Card>
         </Col>
         <Col span={12}>
-          <ReactJson src={item.data} theme="monokai"/>
+          <ReactJson src={item.data}/>
         </Col>
       </Row>
+      <Divider />
     </div>
   );
 };

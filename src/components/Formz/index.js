@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import EditableFormTable from "../FormzTable";
 import { Modal, Button, Input, Icon } from "antd";
-import {createForm} from "../../services/s_formz";
+import { createForm } from "../../services/s_formz";
 
 class Formz extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Formz extends React.Component {
       description: ""
     };
   }
-  
+
   showModal = () => {
     this.setState({
       visible: true
@@ -53,7 +53,12 @@ class Formz extends React.Component {
     return (
       <div>
         <div>
-          <Button icon="plus" type="primary" onClick={this.showModal} className="new-form-button">
+          <Button
+            icon="plus"
+            type="primary"
+            onClick={this.showModal}
+            className="new-form-button"
+          >
             New Form
           </Button>
 
