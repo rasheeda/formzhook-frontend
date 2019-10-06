@@ -3,6 +3,7 @@ import { FORMZ_API_URL, STATUSES } from "../../utils/u_constants";
 import wretch from "wretch";
 import FormzDataItem from "../FormzDataItem";
 import { authHeader } from "../../utils/u_authHeader";
+import { Spin } from "antd";
 
 export default class FormzData extends React.Component {
   constructor(props) {
@@ -20,7 +21,6 @@ export default class FormzData extends React.Component {
       .query({})
       .get()
       .json(response => {
-        console.log("results: ", response);
         this.setState({
           FormzDataResults: response,
           FormzDataStatus: STATUSES.success
@@ -36,13 +36,13 @@ export default class FormzData extends React.Component {
   render() {
     return (
       <div>
-        Hello from formz data
         {this.state.FormzDataStatus === STATUSES.success && (
           <FormzDataItem
             results={this.state.FormzDataResults}
             key={this.state.FormzDataResults}
           />
         )}
+        {this.state.FormzDataStatus === STATUSES.idle && <Spin size="large"/>}
       </div>
     );
   }

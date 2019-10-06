@@ -10,11 +10,14 @@ import {
   Divider,
   Tag,
   Popconfirm,
-  Alert
+  Alert,
+  Typography
 } from "antd";
 import { STATUSES } from "../../utils/u_constants";
 import { Link } from "react-router-dom";
 import { loadForm, updateForm, deleteForm } from "../../services/s_formz";
+
+const { Paragraph, Text } = Typography;
 
 const EditableContext = React.createContext();
 
@@ -96,7 +99,10 @@ class EditableTable extends React.Component {
         title: "ID",
         dataIndex: "unique_id",
         key: "unique_id",
-        editable: false
+        editable: false,
+        render: id => (
+          <Paragraph copyable><Text code>{id}</Text></Paragraph>
+        )
       },
       {
         title: "Date Created",
@@ -115,7 +121,7 @@ class EditableTable extends React.Component {
 
             {/* link to component FormzData */}
             <Link to={"/formz/" + record.unique_id + "/data"}>
-              <Button type="primary">View Data</Button>
+              <Button type="dashed">View Data</Button>
             </Link>
           </span>
         ),
@@ -154,7 +160,7 @@ class EditableTable extends React.Component {
                 disabled={editingKey !== ""}
                 onClick={() => this.edit(record.id)}
               >
-                Edit
+                <Text>Edit</Text>
               </a>
               <Divider type="vertical" />
               <EditableContext.Consumer>
@@ -163,7 +169,7 @@ class EditableTable extends React.Component {
                     title="Are you sure you want to delete this form?"
                     onConfirm={() => this.delete(form, record.id)}
                   >
-                    <a>Delete</a>
+                    <a><Text type="danger">Delete</Text></a>
                   </Popconfirm>
                 )}
               </EditableContext.Consumer>
@@ -192,9 +198,7 @@ class EditableTable extends React.Component {
 
   isEditing = record => record.id === this.state.editingKey;
 
-  cancel = () => {
-    this.setState({ editingKey: "" });
-  };
+  cancel = () => this.setState({ editingKey: "" });
 
   save(form, key) {
     form.validateFields((error, row) => {
@@ -231,9 +235,7 @@ class EditableTable extends React.Component {
     });
   }
 
-  edit(key) {
-    this.setState({ editingKey: key });
-  }
+  edit = key => this.setState({ editingKey: key });
 
   delete(form, key) {
     form.validateFields((error, row) => {

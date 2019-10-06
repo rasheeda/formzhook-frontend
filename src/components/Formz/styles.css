@@ -6,3 +6,8 @@ table {
   word-wrap: break-word;
   word-break: break-all;
 }
+
+.new-form-button {
+  margin-bottom: 15px;
+  color: black;
+}

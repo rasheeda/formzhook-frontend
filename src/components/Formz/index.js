@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 import EditableFormTable from "../FormzTable";
-import { Modal, Button, Input } from "antd";
+import { Modal, Button, Input, Icon } from "antd";
 import {createForm} from "../../services/s_formz";
 
 class Formz extends React.Component {
@@ -27,9 +27,11 @@ class Formz extends React.Component {
 
     createForm(this.state.name, this.state.description)
       .json(response => {
-        console.log('response', response);
         if (response.name === this.state.name) {
           this.setState({ loading: false, visible: false });
+          setTimeout(function() {
+            window.location.reload();
+          }, 1000);
         }
       })
       .catch(() => {});
@@ -51,13 +53,13 @@ class Formz extends React.Component {
     return (
       <div>
         <div>
-          <Button type="primary" onClick={this.showModal}>
+          <Button icon="plus" type="primary" onClick={this.showModal} className="new-form-button">
             New Form
           </Button>
 
           <Modal
             visible={this.state.visible}
-            title="Title"
+            title="Create a new form"
             onOk={this.handleOk}
             onCancel={this.handleCancel}
             footer={[

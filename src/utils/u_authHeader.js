@@ -8,8 +8,10 @@ export function authHeader() {
     //request a new token
     refreshAccessToken()
     .json(response => {
-        console.log('requested token refresh response:', response)
         auth.setAccessToken(response.access_token);
+        setTimeout(function() {
+          window.location.reload();
+        }, 1000);
     })
     .catch(() => {});
   }
