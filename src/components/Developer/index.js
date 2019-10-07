@@ -7,7 +7,8 @@ import {
   Table,
   Card,
   Col,
-  Row
+  Row,
+  Typography
 } from "antd";
 import { generateApiKey, getApiKey } from "../../services/s_formz";
 import SyntaxHighlighter from "react-syntax-highlighter";
@@ -15,6 +16,9 @@ import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { defaultStyle } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import "./styles.css";
+
+const { Paragraph, Text } = Typography;
 
 function confirm(e) {
   generateApiKey()
@@ -38,9 +42,9 @@ const API_KEY_COLUMNS = [
     dataIndex: "api_key",
     key: "api_key",
     render: key => (
-      <SyntaxHighlighter language="http" style={defaultStyle}>
-        {key}
-      </SyntaxHighlighter>
+      <Paragraph copyable>
+        <Text code>{key}</Text>
+      </Paragraph>
     )
   },
   {
@@ -54,7 +58,7 @@ const API_KEY_COLUMNS = [
         okText="Yes"
         cancelText="No"
       >
-        <Button type="primary" size="small">
+        <Button type="primary" size="small" className="generate-api-key-button">
           Generate API Key
         </Button>
       </Popconfirm>
