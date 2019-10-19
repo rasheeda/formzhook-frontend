@@ -31,7 +31,7 @@ class UserLogin extends React.Component {
               this.props.history.push("/dashboard");
               setTimeout(function() {
                 window.location.reload();
-              }, 1000);
+              }, 100);
             });
           })
           .catch(() => {

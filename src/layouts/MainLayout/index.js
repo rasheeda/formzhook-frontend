@@ -45,7 +45,7 @@ function logout() {
   auth.logout(() => {
     return setTimeout(function() {
       window.location.reload();
-    }, 1000);
+    }, 100);
   });
 }
 

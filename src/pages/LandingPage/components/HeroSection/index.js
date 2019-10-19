@@ -6,7 +6,11 @@ import "./styles.scss";
 
 function HeroSection(props) {
   return (
-    <Section color={props.color} size={props.size}>
+    <Section
+      color={props.color}
+      size={props.size}
+      backgroundImage="https://images.unsplash.com/photo-1567450121326-28da3797155d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
+    >
       <div className="container">
         <div className="columns is-vcentered is-desktop">
           <div className="column is-5-desktop has-text-centered-touch">

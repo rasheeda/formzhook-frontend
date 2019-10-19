@@ -1,10 +1,10 @@
 import React from "react";
-import Section from "./../Section";
-import SectionHeader from "./../SectionHeader";
-import SectionButton from "./../SectionButton";
+import Section from "../Section";
+import SectionHeader from "../SectionHeader";
+import SectionButton from "../SectionButton";
 import "./styles.scss";
 
-function CtaSection(props) {
+function GetStartedSection(props) {
   return (
     <Section color={props.color} size={props.size}>
       <div className="container">
@@ -31,4 +31,4 @@ function CtaSection(props) {
   );
 }
 
-export default CtaSection;
+export default GetStartedSection;

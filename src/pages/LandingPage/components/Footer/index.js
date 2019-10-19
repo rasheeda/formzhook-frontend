@@ -14,7 +14,7 @@ function Footer(props) {
         </div>
         <div className="links right">
           <Link to="/about">About</Link>
-          <Link to="/faq">FAQ</Link>
+          <Link to="/documentation">Documentation</Link>
           <Link to="/contact">Contact</Link>
           <a
             target="_blank"

@@ -3,7 +3,7 @@ import Section from "./../Section";
 import SectionHeader from "./../SectionHeader";
 import "./styles.scss";
 
-function ContentSection(props) {
+function ContactUsSection(props) {
   return (
     <Section
       color={props.color}
@@ -23,4 +23,4 @@ function ContentSection(props) {
   );
 }
 
-export default ContentSection;
+export default ContactUsSection;

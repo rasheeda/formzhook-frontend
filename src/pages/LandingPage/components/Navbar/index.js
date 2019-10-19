@@ -29,74 +29,58 @@ function Navbar(props) {
         <div className={"navbar-menu" + (menuOpen ? " is-active" : "")}>
           <div className="navbar-start">
             <Link className="navbar-item" to="/about">
-              About
+              Features
             </Link>
-            <Link className="navbar-item" to="/pricing">
-              Pricing
+            <Link className="navbar-item" to="/documentation">
+              Documentation
             </Link>
-            <div className="navbar-item has-dropdown is-hoverable" href="/">
-              <span className="navbar-link">More</span>
-              <div className="navbar-dropdown">
-                <Link className="navbar-item" to="/faq">
-                  FAQ
+            <Link className="navbar-item" to="/contact-us">
+              Contact Us
+            </Link>
+          </div>
+        </div>
+        <div className="navbar-end">
+          {Auth.isAuthenticated() && (
+            <div className="navbar-item has-dropdown is-hoverable">
+              <Link className="navbar-link" to="/">
+                Account
+              </Link>
+              <div className="navbar-dropdown is-boxed">
+                <Link className="navbar-item" to="/dashboard">
+                  Dashboard
                 </Link>
-                <Link className="navbar-item" to="/contact">
-                  Contact
-                </Link>
-                <a
+                <Link
                   className="navbar-item"
-                  href="https://medium.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  to="/signout"
+                  onClick={e => {
+                    e.preventDefault();
+                    Auth.logout();
+                  }}
                 >
-                  Blog
-                </a>
+                  Sign out
+                </Link>
               </div>
             </div>
-          </div>
-          <div className="navbar-end">
-            {Auth.isAuthenticated() && (
-              <div className="navbar-item has-dropdown is-hoverable">
-                <Link className="navbar-link" to="/">
-                  Account
-                </Link>
-                <div className="navbar-dropdown is-boxed">
-                  <Link className="navbar-item" to="/dashboard">
-                    Dashboard
-                  </Link>
-                  <Link
-                    className="navbar-item"
-                    to="/signout"
-                    onClick={e => {
-                      e.preventDefault();
-                      Auth.logout();
-                    }}
-                  >
-                    Sign out
-                  </Link>
-                </div>
-              </div>
-            )}
+          )}
 
-            {!Auth.isAuthenticated() && (
-              <>
-                <Link className="navbar-item" to="/login">
-                  Login
-                </Link>
-                <div className="navbar-item">
-                  <SectionButton
-                    parentColor={props.color}
-                    size="normal"
-                    onClick={() => {
-                      window.location.push("/register");
-                    }}
-                  >
-                    Sign Up
-                  </SectionButton>
-                </div>
-              </>
-            )}
-          </div>
+          {!Auth.isAuthenticated() && (
+            <>
+              <Link className="navbar-item" to="/login">
+                Login
+              </Link>
+              <div className="navbar-item">
+                <SectionButton
+                  parentColor={props.color}
+                  size="normal"
+                  onClick={() => {
+                    window.location.push("/register");
+                  }}
+                >
+                  Sign Up
+                </SectionButton>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </NavbarContainer>

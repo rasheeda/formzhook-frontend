@@ -17,28 +17,27 @@ function FeaturesSection(props) {
         <Features
           items={[
             {
-              title: "Explore",
+              title: "Formz",
               description:
-                "Integer ornare neque mauris, ac vulputate lacus venenatis et. Pellentesque ut ultrices purus.",
+                "Create formz and submit as much data as you need. View submitted data in a table and in JSON",
               image: "https://uploads.divjoy.com/undraw-mind_map_cwng.svg"
             },
             {
-              title: "Explore",
+              title: "Webhookz",
               description:
-                "Integer ornare neque mauris, ac vulputate lacus venenatis et. Pellentesque ut ultrices purus.",
+                "Generate webhook URLs on the fly for testing your callback URLs",
               image:
                 "https://uploads.divjoy.com/undraw-personal_settings_kihd.svg"
             },
             {
-              title: "Explore",
-              description:
-                "Integer ornare neque mauris, ac vulputate lacus venenatis et. Pellentesque ut ultrices purus.",
+              title: "Documentation",
+              description: "Great documentation to easily get started",
               image: "https://uploads.divjoy.com/undraw-having_fun_iais.svg"
             },
             {
-              title: "Explore",
+              title: "FREE and Open Source",
               description:
-                "Integer ornare neque mauris, ac vulputate lacus venenatis et. Pellentesque ut ultrices purus.",
+                "Formzhok service is FREE and open source. Consider contributing here",
               image: "https://uploads.divjoy.com/undraw-balloons_vxx5.svg"
             }
           ]}
