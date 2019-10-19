@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import UserRegistration from "../../pages/Register";
-import UserLogin from "../../pages/Login";
+import UserRegistration from "../Register";
+import UserLogin from "../Login";
 
-const PagesContent = () => {
+const AuthLayoutContent = () => {
   return (
     <div>
       <Switch>
@@ -14,4 +14,4 @@ const PagesContent = () => {
   );
 };
 
-export default PagesContent;
+export default AuthLayoutContent;

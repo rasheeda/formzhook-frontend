@@ -6,13 +6,13 @@ import "antd/dist/antd.css";
 import "./main.css";
 import { Layout, Divider } from "antd";
 import auth from "../../utils/u_auth";
-import PagesLayout from "../../pages/PagesLayout";
+import LandingPage from "../../pages/LandingPage";
 
 const { Header, Content, Footer } = Layout;
 
 const MainLayout = () => {
   if (!auth.isAuthenticated()) {
-    return <PagesLayout />;
+    return <LandingPage />;
   }
 
   return (
@@ -43,11 +43,9 @@ const MainLayout = () => {
 
 function logout() {
   auth.logout(() => {
-    return (
-      setTimeout(function() {
-        window.location.reload();
-      }, 1000)
-    );
+    return setTimeout(function() {
+      window.location.reload();
+    }, 1000);
   });
 }
 

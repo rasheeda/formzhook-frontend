@@ -1,7 +1,6 @@
 import React from "react";
 import { Menu } from "antd";
-import { Link, Redirect } from "react-router-dom";
-import auth from "../../utils/u_auth";
+import { Link } from "react-router-dom";
 
 function HeaderLayout() {
   return (
@@ -12,7 +11,7 @@ function HeaderLayout() {
       style={{ lineHeight: "64px" }}
     >
       <Menu.Item key="1">
-        <Link to="/">Dashboard</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </Menu.Item>
       <Menu.Item key="2">
         <Link to="/formz">Formz</Link>

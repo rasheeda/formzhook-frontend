@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Alert, Button, Divider } from "antd";
-import { login } from "../../services/s_auth";
-import auth from "../../utils/u_auth";
+import { login } from "../../../services/s_auth";
+import auth from "../../../utils/u_auth";
 import { Link } from "react-router-dom";
 
 class UserLogin extends React.Component {
@@ -13,7 +13,7 @@ class UserLogin extends React.Component {
 
   componentDidMount() {
     if (auth.isAuthenticated()) {
-      this.props.history.push("/");
+      this.props.history.push("/dashboard");
     }
   }
 
@@ -28,7 +28,7 @@ class UserLogin extends React.Component {
             auth.login(() => {
               auth.setRefreshToken(response.refresh_token);
               auth.setAccessToken(response.access_token);
-              this.props.history.push("/");
+              this.props.history.push("/dashboard");
               setTimeout(function() {
                 window.location.reload();
               }, 1000);

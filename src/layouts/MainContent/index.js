@@ -11,6 +11,7 @@ const MainContent = () => {
     <div>
       <Switch>
         <ProtectedRoute path="/" exact component={Dashboard} />
+        <ProtectedRoute path="/dashboard" exact component={Dashboard} />
         <ProtectedRoute path="/formz/" exact component={Formz} />
         <ProtectedRoute path="/developers/" exact component={Developer} />
         <ProtectedRoute

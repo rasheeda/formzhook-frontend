@@ -1,11 +1,11 @@
 import React from "react";
 import { Layout } from "antd";
-import AuthLayoutContent from "../AuthLayout/AuthLayoutContent";
+import AuthLayoutContent from "./AuthLayoutContent";
 import { BrowserRouter } from "react-router-dom";
 
 const { Content, Footer } = Layout;
 
-const PagesLayout = () => {
+const AuthLayout = () => {
   return (
     <BrowserRouter>
       <Layout className="layout">
@@ -28,4 +28,4 @@ const PagesLayout = () => {
   );
 };
 
-export default PagesLayout;
+export default AuthLayout;
