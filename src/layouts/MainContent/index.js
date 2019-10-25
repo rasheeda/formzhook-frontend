@@ -5,6 +5,7 @@ import Formz from "../../components/Formz";
 import Developer from "../../components/Developer";
 import FormzData from "../../components/FormzData";
 import ProtectedRoute from "../../utils/u_protected.route";
+import Webhookz from "../../components/Webhookz";
 
 const MainContent = () => {
   return (
@@ -13,6 +14,7 @@ const MainContent = () => {
         <ProtectedRoute path="/" exact component={Dashboard} />
         <ProtectedRoute path="/dashboard" exact component={Dashboard} />
         <ProtectedRoute path="/formz/" exact component={Formz} />
+        <ProtectedRoute path="/webhookz/" exact component={Webhookz} />
         <ProtectedRoute path="/developers/" exact component={Developer} />
         <ProtectedRoute
           path="/formz/:unique_id/data"

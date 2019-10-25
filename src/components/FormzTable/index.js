@@ -96,12 +96,21 @@ class EditableTable extends React.Component {
         editable: true
       },
       {
-        title: "ID",
+        title: "Unique ID",
+        dataIndex: "unique_id",
+        key: "unique_id",
+        editable: false,
+        render: id => <Text mark>{id}</Text>
+      },
+      {
+        title: "Unique URL",
         dataIndex: "unique_id",
         key: "unique_id",
         editable: false,
         render: id => (
-          <Paragraph copyable><Text code>{id}</Text></Paragraph>
+          <Paragraph copyable>
+            {`https://formzhook.io/api/formz/${id}/data`}
+          </Paragraph>
         )
       },
       {
@@ -169,7 +178,9 @@ class EditableTable extends React.Component {
                     title="Are you sure you want to delete this form?"
                     onConfirm={() => this.delete(form, record.id)}
                   >
-                    <a><Text type="danger">Delete</Text></a>
+                    <a>
+                      <Text type="danger">Delete</Text>
+                    </a>
                   </Popconfirm>
                 )}
               </EditableContext.Consumer>

@@ -1,9 +1,9 @@
 import wretch from "wretch";
 import { FORMZ_API_URL } from "../utils/u_constants";
-import {authHeader} from "../utils/u_authHeader";
+import { authHeader } from "../utils/u_authHeader";
 
-export const loadForm = () =>
-  wretch(FORMZ_API_URL)
+export const loadForm = (isWebhook = 0) =>
+  wretch(`${FORMZ_API_URL}?is_webhook=${isWebhook}`)
     .headers(authHeader())
     .get();
 
@@ -22,17 +22,17 @@ export const loadFormDataCount = formId =>
     .headers(authHeader())
     .get();
 
-export const createForm = (name, description) =>
+export const createForm = (name, description, isWebhook = 0) =>
   wretch(FORMZ_API_URL)
     .headers(authHeader())
-    .post({'name': name, 'description': description});
+    .post({ name: name, description: description, is_webhook: isWebhook });
 
 export const generateApiKey = () =>
-wretch(`${FORMZ_API_URL}/users/key/generate`)
+  wretch(`${FORMZ_API_URL}/users/key/generate`)
     .headers(authHeader())
     .post();
 
-export const getApiKey = () => 
-wretch(`${FORMZ_API_URL}/users/key`)
+export const getApiKey = () =>
+  wretch(`${FORMZ_API_URL}/users/key`)
     .headers(authHeader())
     .get();
