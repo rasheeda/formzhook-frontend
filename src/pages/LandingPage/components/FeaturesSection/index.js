@@ -20,25 +20,24 @@ function FeaturesSection(props) {
               title: "Formz",
               description:
                 "Create formz and submit as much data as you need. View submitted data in a table and in JSON",
-              image: "https://uploads.divjoy.com/undraw-mind_map_cwng.svg"
+              image: "imgs/dashboard.png"
             },
             {
               title: "Webhookz",
               description:
                 "Generate webhook URLs on the fly for testing your callback URLs",
-              image:
-                "https://uploads.divjoy.com/undraw-personal_settings_kihd.svg"
+              image: "imgs/webhooks.png"
             },
             {
               title: "Documentation",
               description: "Great documentation to easily get started",
-              image: "https://uploads.divjoy.com/undraw-having_fun_iais.svg"
+              image: "imgs/api.png"
             },
             {
               title: "FREE and Open Source",
               description:
                 "Formzhok service is FREE and open source. Consider contributing here",
-              image: "https://uploads.divjoy.com/undraw-balloons_vxx5.svg"
+              image: "imgs/api.png"
             }
           ]}
         />
